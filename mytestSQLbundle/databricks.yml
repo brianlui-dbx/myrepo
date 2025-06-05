@@ -33,6 +33,8 @@ targets:
 
   prod:
     mode: production
+    presets:
+      name_prefix: '[prod]'
     workspace:
       host: https://adb-4463200756602490.10.azuredatabricks.net
       # We explicitly deploy to /Workspace/Users/brian.lui@databricks.com to make sure we only have a single copy.

@@ -1,0 +1,119 @@
+{
+  "datasets" : [ {
+    "name" : "8243f129",
+    "displayName" : "orders_daily",
+    "query" : "SELECT * FROM brluidev.default.orders_daily"
+  }, {
+    "name" : "1d111fd0",
+    "displayName" : "orders_raw",
+    "query" : "SELECT * FROM brluidev.default.orders_raw"
+  } ],
+  "pages" : [ {
+    "name" : "db6ac1d8",
+    "displayName" : "Main",
+    "layout" : [ {
+      "widget" : {
+        "name" : "22c50b44",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "1d111fd0",
+            "fields" : [ {
+              "name" : "weekly(order_date)",
+              "expression" : "DATE_TRUNC(\"WEEK\", `order_date`)"
+            }, {
+              "name" : "count(order_number)",
+              "expression" : "COUNT(`order_number`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "weekly(order_date)",
+              "scale" : {
+                "type" : "categorical",
+                "sort" : {
+                  "by" : "y-reversed"
+                }
+              },
+              "displayName" : "order_date"
+            },
+            "y" : {
+              "fieldName" : "count(order_number)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Count of order_number"
+            },
+            "label" : {
+              "show" : true
+            }
+          },
+          "frame" : {
+            "title" : "Raw Order Volume by Week",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 3,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "f55dffc7",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "8243f129",
+            "fields" : [ {
+              "name" : "daily(order_date)",
+              "expression" : "DATE_TRUNC(\"DAY\", `order_date`)"
+            }, {
+              "name" : "sum(number_of_orders)",
+              "expression" : "SUM(`number_of_orders`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "line",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "daily(order_date)",
+              "scale" : {
+                "type" : "temporal"
+              },
+              "displayName" : "order_date"
+            },
+            "y" : {
+              "fieldName" : "sum(number_of_orders)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Sum of number_of_orders"
+            }
+          },
+          "frame" : {
+            "showTitle" : true,
+            "title" : "Daily order volumes"
+          }
+        }
+      },
+      "position" : {
+        "x" : 3,
+        "y" : 0,
+        "width" : 3,
+        "height" : 6
+      }
+    } ],
+    "pageType" : "PAGE_TYPE_CANVAS"
+  } ]
+}

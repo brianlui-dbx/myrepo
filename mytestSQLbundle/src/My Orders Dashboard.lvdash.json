@@ -113,6 +113,17 @@
         "width" : 3,
         "height" : 6
       }
+    }, {
+      "widget" : {
+        "name" : "0e14afcf",
+        "textbox_spec" : "Title"
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 6,
+        "height" : 2
+      }
     } ],
     "pageType" : "PAGE_TYPE_CANVAS"
   } ]

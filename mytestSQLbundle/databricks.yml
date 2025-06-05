@@ -31,43 +31,16 @@ targets:
       catalog: brluidev
       schema: default
 
-  dev2:
-    mode: development2
+  prod:
+    mode: production
     workspace:
       host: https://adb-4463200756602490.10.azuredatabricks.net
       # We explicitly deploy to /Workspace/Users/brian.lui@databricks.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/brian.lui@databricks.com/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/brian.lui@databricks.com/testdeploymenttoprod/${bundle.name}/${bundle.target}
     variables:
       warehouse_id: be69c16d7922297a
       catalog: brluidev
       schema: test
-    permissions:
-      - user_name: brian.lui@databricks.com
-        level: CAN_MANAGE
-  
-  stg:
-    mode: staging
-    workspace:
-      host: https://adb-2501454565197690.10.azuredatabricks.net
-      # We explicitly deploy to /Workspace/Users/brian.lui@databricks.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/brian.lui@databricks.com/.bundle/${bundle.name}/${bundle.target}
-    variables:
-      warehouse_id: 41542331acc79063
-      catalog: brluistg
-      schema: default
-    permissions:
-      - user_name: brian.lui@databricks.com
-        level: CAN_MANAGE
-
-  prod:
-    mode: production
-    workspace:
-      host: https://adb-2686235725974902.2.azuredatabricks.net
-      root_path: /Workspace/Shared/${bundle.name}/${bundle.target}
-    variables:
-      warehouse_id: 5f856fb4658448c3
-      catalog: brluiprod
-      schema: default
     permissions:
       - user_name: brian.lui@databricks.com
         level: CAN_MANAGE

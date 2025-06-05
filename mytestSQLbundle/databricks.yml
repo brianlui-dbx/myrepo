@@ -40,7 +40,7 @@ targets:
     variables:
       warehouse_id: be69c16d7922297a
       catalog: brluidev
-      schema: default
+      schema: test
     permissions:
       - user_name: brian.lui@databricks.com
         level: CAN_MANAGE

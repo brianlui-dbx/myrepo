@@ -1,0 +1,6 @@
+resources:
+  dashboards:
+    My_Orders_Dashboard:
+      display_name: 'My Orders Dashboard'
+      file_path: ../src/My Orders Dashboard.lvdash.json
+      warehouse_id: ${var.warehouse_id}
